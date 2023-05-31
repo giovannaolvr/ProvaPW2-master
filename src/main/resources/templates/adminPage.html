@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja de Camisas</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+</head>
+<body>
+    <h1>Loja de Camisas</h1>
+
+    <div class="container">
+        <div class="card" th:each="camisa: ${camisaList}">
+            <img th:src="${camisa.imageURI}" alt="Imagem da camisa">
+            <div class="card-info">
+                <p th:text="'Tamanho: ' + ${camisa.tamanho}"></p>
+                <p th:text="'Cor: ' + ${camisa.cor}"></p>
+                <p th:text="'Gênero: ' + ${camisa.tipo}"></p>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{'editarPage/'+${camisa.id}}">
+                    <span class="edit-icon">&#9998;</span>
+                    Editar
+                </a>
+                <a th:href="@{'excluir/'+${camisa.id}}">
+                    <span class="delete-icon">&#128465;</span>
+                    Excluir
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <h2>Cadastrar <a th:href="@{cadastrarPage}">nova camisa</a>.</h2>
+    
+</body>
+</html>

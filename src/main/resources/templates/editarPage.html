@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Camisa</title>
+</head>
+<body>
+    <h2>Editar Camisa</h2>
+    <form method="post" th:action="@{/doSalvar}" th:object="${camisa}">
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label>Tamanho:</label>
+            <input type="text" th:field="*{tamanho}" />
+            <span th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></span>
+        </div>
+        <div>
+            <label>Cor:</label>
+            <input type="text" th:field="*{cor}" />
+            <span th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></span>
+        </div>
+        <div>
+            <label>Tipo:</label>
+            <input type="text" th:field="*{tipo}" />
+            <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+        </div>
+        <div>
+            <label>Preço:</label>
+            <input type="text" th:field="*{preco}" />
+            <span th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></span>
+        </div>
+        <div>
+            <label>ImageURI:</label>
+        <input type="file" accept="image/png, image/jpeg" th:field="*{imageURI}">
+        <p th:if="${#fields.hasErrors('imageURI')}" th:errors="*{imageURI}"></p>
+        </div>
+
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

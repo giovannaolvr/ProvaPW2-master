@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja de Camisas</title>
+</head>
+<body>
+
+<h1>Loja de Camisas</h1>
+
+<table>
+    <tr th:each="camisa: ${camisaList}">
+        <td th:text="${camisa.id}"></td>
+        <td th:text="${camisa.tamanho}"></td>
+        <td th:text="${camisa.cor}"></td>
+        <td th:text="${camisa.tipo}"></td>
+        <td th:text="${camisa.preco}"></td>
+        <td>
+            <img th:src="${camisa.imageURI}" width="50" height="50" alt="Imagem da camisa">
+        </td>
+        <td>
+            <a th:href="@{'adicionarAoCarrinho/'+${camisa.id}}">Adicionar ao carrinho</a>
+        </td>
+
+    </tr>
+</table>
+
+<h2><a th:href="@{verCarrinho}">Ver carrinho.</a></h2>
+
+</body>
+</html>
