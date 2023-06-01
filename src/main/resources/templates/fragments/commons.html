@@ -15,15 +15,26 @@
 
 <body>
 
+
 <nav th:fragment="NavigationIndex" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">TADSACANAGEM</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand">TADS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link active"aria-current="page" href="/cadastrarPage">CadastrarProdutos</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/verCarrinho">Ver Carrinho</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/doLogin">Login</a></li>
             </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${quantidadeCarrinho}"></span>
+                </button>
+            </form>
         </div>
     </div>
 </nav>
@@ -35,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link active"aria-current="page" href="/adminPage">adminPage</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/adminPage">Página Adm</a></li>
             </ul>
         </div>
     </div>
@@ -43,12 +54,25 @@
 
 <nav th:fragment="NavigationAdmin" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Bem vindo Adm!!</a>
+        <a class="navbar-brand" href="#!">Bem vindo, Admin!!</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link active"aria-current="page" href="/cadastrarPage">CadastrarProdutos</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/cadastrarPage">Cadastrar Camisa</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav th:fragment="NavigationCarrinho" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#!">Bem vindo, User!!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
+                <a class="nav-link active1" aria-current="page" th:href="@{'/finalizarCompra'}">Finalizar Compra</a>
             </ul>
         </div>
     </div>
@@ -56,11 +80,12 @@
 
 <nav th:fragment="NavigationEditar" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Ediçãozinha de cria</a>
+        <a class="navbar-brand" href="#!">Editar Camisa</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>            </ul>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>            
+            </ul>
         </div>
     </div>
 </nav>
@@ -69,7 +94,7 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">SÂO 02:48 DA MADRUGADA</h1>
+                <h1 class="display-4 fw-bolder">EDIÇÃO</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Sofrimento by taniro</p>
             </div>
         </div>
@@ -80,7 +105,7 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Melhores camisas para o curso mais sofrido TESTE</h1>
+                <h1 class="display-4 fw-bolder">Loja de Camisas</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Sofrimento by taniro</p>
             </div>
         </div>
@@ -91,7 +116,7 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Cadastro</h1>
+                <h1 class="display-4 fw-bolder">Cadastro de Camisas</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Sofrimento by taniro</p>
             </div>
         </div>
@@ -102,7 +127,18 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Silencio o ADM está trabalhando</h1>
+                <h1 class="display-4 fw-bolder">Página ADMIN</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Sofrimento by taniro</p>
+            </div>
+        </div>
+    </header>
+</header>
+
+<header th:fragment="headerCarrinho">
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Bem vindo ao seu carrinho!!</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Sofrimento by taniro</p>
             </div>
         </div>
@@ -114,18 +150,18 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
-                <div class="col mb-5" th:each="camisa: ${camisaList}">
+                <div class="col mb-5" th:each="camisa: ${camisaList}" th:if="${camisa.softDelete == null}">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top" th:src="@{'/images/img-upload'+*{camisa.imageURI}}" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder" th:text="${camisa.tipo}"></h5>
+                                <h5 class="fw-bolder" th:text="${'R$'+camisa.preco}"></h5>
                                 <!-- Product price-->
                                 <div class="alinhar">
-                                    <p th:text="${'R$'+camisa.preco}"></p>
+                                    <p th:text="${camisa.tipo}"></p>
                                     <p th:text="${'Tamanho: '+camisa.tamanho}"></p>
                                     <p th:text="${'Cor: '+camisa.cor}"></p>
                                 </div>
@@ -145,7 +181,7 @@
    <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
-                <div class="col mb-5" th:each="camisa: ${camisaList}">
+                <div class="col mb-5" th:each="camisa: ${camisaList}" th:if="${camisa.softDelete == null}">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="card-img-top" th:src="@{'/images/img-upload'+*{camisa.imageURI}}" alt="..." />
@@ -153,10 +189,10 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder" th:text="${camisa.tipo}"></h5>
+                                <h5 class="fw-bolder" th:text="${'R$'+camisa.preco}"></h5>
                                 <!-- Product price-->
                                 <div class="alinhar">
-                                    <p th:text="${'R$'+camisa.preco}"></p>
+                                    <p th:text="${camisa.tipo}"></p>
                                     <p th:text="${'Tamanho: '+camisa.tamanho}"></p>
                                     <p th:text="${'Cor: '+camisa.cor}"></p>
                                 </div>
@@ -204,7 +240,8 @@
                                     <option value="azul">Azul</option>
                                     <option value="branco">Branco</option>
                                     <option value="preto">Preto</option>
-                                    <option value="vermelho">Vermelho</option>
+                                    <option value="vermelho">Amarelo</option>
+                                    <option value="vermelho">Laranja</option>
                                 </select>
                                 <p th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></p>
                                 <br><br>
@@ -215,8 +252,14 @@
                                 <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
                                 <br><br>
                             </div>
+                            <div>
                                 <td>
-                                    <button class="nav-link active1" type="submi">salvar</button> 
+                                    <label>Imagem: </label>
+                                    <input type="file" name="file">
+                                </td>
+                            </div>
+                                <td>
+                                    <button class="nav-link active1" type="submit">Salvar</button> 
                                 </td>
                         </div>
                      </div>
@@ -232,8 +275,9 @@
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
                 <div class="col mb-5">
                     <div class="card h-100">
+                        <input type="file" name="file">
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -259,7 +303,8 @@
                                         <option value="azul">Azul</option>
                                         <option value="branco">Branco</option>
                                         <option value="preto">Preto</option>
-                                        <option value="vermelho">Vermelho</option>
+                                        <option value="vermelho">Amarelo</option>
+                                        <option value="vermelho">Laranja</option>
                                     </select>
                                     <p th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></p>
                                     <br><br>
@@ -272,13 +317,9 @@
                                 </div>
                                 <div>
                                     <td>
-                                        <label>Imagem: </label>
-                                        <input type="file" name="file">
-                                    </td>
-                                </div>
-                                    <td>
                                         <button class="nav-link active1" type="submit">Cadastrar</button> 
                                     </td>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -287,6 +328,34 @@
         </div>
     </section>
 </section>
+
+<section th:fragment="sectionCarrinho">
+    <section class="py-5">
+         <div class="container px-4 px-lg-5 mt-5">
+             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
+                 <div class="col mb-5" th:each="camisa: ${carrinho}">
+                     <div class="card h-100">
+                         <!-- Product image-->
+                         <img class="card-img-top" th:src="@{'/images/img-upload'+*{camisa.imageURI}}" alt="..." />
+                         <!-- Product details-->
+                         <div class="card-body p-4">
+                             <div class="text-center">
+                                 <!-- Product name-->
+                                 <h5 class="fw-bolder" th:text="${'R$'+camisa.preco}"></h5>
+                                 <!-- Product price-->
+                                 <div class="alinhar">
+                                     <p th:text="${camisa.tipo}"></p>
+                                     <p th:text="${'Tamanho: '+camisa.tamanho}"></p>
+                                     <p th:text="${'Cor: '+camisa.cor}"></p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+ </section>
 
 <footer th:fragment="footer">
     <footer class="py-5 bg-dark">

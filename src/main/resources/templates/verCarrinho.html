@@ -1,36 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Ver Carrinho</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
+    <div th:replace="~{/fragments/commons :: head}"></div>
+    <title>
+        Carrinho
+    </title>
 <body>
-
-<h1>Carrinho de Compras</h1>
-
-<!-- Adicione o código abaixo para exibir a mensagem de remoção com sucesso -->
 <div th:if="${param.mensagem}" class="alert alert-success">
     <span th:text="${param.mensagem}"></span>
 </div>
 
-<table>
-    <tr th:each="camisa: ${carrinho}">
-        <td th:text="${camisa.id}"></td>
-        <td th:text="${camisa.tamanho}"></td>
-        <td th:text="${camisa.cor}"></td>
-        <td th:text="${camisa.tipo}"></td>
-        <td th:text="${camisa.preco}"></td>
-        <td>
-            <img th:src="${camisa.imageURI}" width="50" height="50" alt="Imagem da camisa">
-        </td>
-        <td>
-            <a th:href="@{'/removerDoCarrinho/'+${camisa.id}}">Remover do carrinho</a>
-        </td>
-    </tr>
-</table>
-<a th:href="@{'/finalizarCompra'}">Finalizar Compra</a>
-
-<h2><a th:href="@{'/index'}">Voltar para a página inicial.</a></h2>
+<div th:replace="~{/fragments/commons :: NavigationCarrinho}"></div>
+<div th:replace="~{/fragments/commons :: headerCarrinho}"></div>
+<div th:replace="~{/fragments/commons :: sectionCarrinho}"></div>
+<div th:replace="~{/fragments/commons :: footer}"></div>
+<div th:replace="~{/fragments/commons :: script}"></div>
 
 </body>
 </html>

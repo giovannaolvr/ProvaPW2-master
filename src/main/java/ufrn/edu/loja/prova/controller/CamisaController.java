@@ -34,10 +34,10 @@ public class CamisaController {
 
     @RequestMapping(value = {"/", "/index", "/index.html"}, method = RequestMethod.GET)
     public String getIndex(Model model, HttpServletResponse response, HttpSession session) {
-        //List<CamisaModel> camisaList = service.findBySoftDeleteIsNull();
+        
         List<CamisaModel> camisaList = service.findAll();
         model.addAttribute("camisaList", camisaList);
-        System.out.println(camisaList.size());
+
         // Adicionar o cookie de visita
         addVisitaCookie(response);
 
@@ -46,15 +46,6 @@ public class CamisaController {
         model.addAttribute("quantidadeCarrinho", carrinho.size());
 
         return "index.html";
-    }
-
-    @RequestMapping(value = {"/formatada"}, method = RequestMethod.GET)
-    public String getFormatada(Model model){
-
-        List<CamisaModel> camisaList = service.findAll();
-        model.addAttribute("camisaList", camisaList);
-
-        return "formatada2.0";
     }
 
     @GetMapping("/cadastrarPage")
@@ -124,7 +115,6 @@ public class CamisaController {
             return "redirect:/index?mensagem=Nao ha itens no carrinho";
         }
     }
-
     
     // Adicionar o cookie de visita
     private void addVisitaCookie(HttpServletResponse response) {

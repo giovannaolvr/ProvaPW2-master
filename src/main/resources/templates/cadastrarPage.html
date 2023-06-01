@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
     <div th:replace="~{/fragments/commons :: head}"></div>
     <title>
-        Jottinha Cadastro
+        CadastararPage
     </title>
 <body>
     <div th:replace="~{/fragments/commons :: NavigationCadastro}"></div>
@@ -11,6 +11,7 @@
     <form method="post" th:action="@{/doSalvar}" th:object="${camisa}" enctype="multipart/form-data">
         <div th:replace="~{/fragments/commons :: sectionCadastro}"></div>
     </form>
+    
     <div th:replace="~{/fragments/commons :: footer}"></div>
     <div th:replace="~{/fragments/commons :: script}"></div>
 </body>

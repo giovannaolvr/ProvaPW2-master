@@ -3,26 +3,6 @@ QUESTÕES:
 
 PENDENTES:
 
-3) Prepare seus templates Thymeleaf para uso de bootstrap. Simplifique suas páginas utilizando
-fragments para separar, no mínimo, as partes de cabeçalho, principal e rodapé. A sugestão é o uso
-do template HTML disponível no link (https://startbootstrap.com/template/shop-homepage) (1,0 ponto)
-
-//feito: falta mostrar as imagens
-4) Implemente a rota de (“/index”) para, a partir de uma solicitação do tipo GET, gerar uma resposta
-contendo no corpo um HTML que contém uma tabela ou similar de todos os itens (linhas) que estão
-presentes no banco de dados e que não estão deletados (deleted == null). Note que a aplicação deve
-utilizar uma técnica de soft-delete, ou seja, os itens jamais serão deletados de verdade do banco. Os
-itens são deletados de maneira lógica quando deleted recebe a data atual. 
-
->>>>> Você deve exibir a imagem de cada um dos itens da lista. <<<<<<<
-
-Para cada item listado adicione um link para a rota
-“/adicionarCarrinho” passando como parâmetro para tal rota o ID do item escolhido. Por fim, adicione
-na página gerada pela rota “/index” um link para a rota “/verCarrinho”. Adicione um cookie na resposta
-chamado “visita” com a data e hora do acesso ao site. Esse cookie deve ser permanente e durar
-24hs. (1,0 ponto)
-
-
 13) Adicione o Spring Security ao seu projeto e implemente o UserDetails Service. Configure a
 aplicação para que sejam cadastrados automaticamente 3 usuários sempre que a aplicação for
 executada, sendo eles um administrador e os outros dois usuários padrão. Configure o Spring
@@ -102,3 +82,22 @@ um link para a rota “/finalizarCompra”. (0,5 ponto)
 //feita
 12) Implemente a rota de (“/finalizarCompra”) que ao receber uma solicitação do tipo GET invalida a
 Sessão existente e redireciona a resposta para “index”. (0,5 ponto)
+
+//feito: falta mostrar as imagens
+4) Implemente a rota de (“/index”) para, a partir de uma solicitação do tipo GET, gerar uma resposta
+contendo no corpo um HTML que contém uma tabela ou similar de todos os itens (linhas) que estão
+presentes no banco de dados e que não estão deletados (deleted == null). Note que a aplicação deve
+utilizar uma técnica de soft-delete, ou seja, os itens jamais serão deletados de verdade do banco. Os
+itens são deletados de maneira lógica quando deleted recebe a data atual. 
+
+>>>>> Você deve exibir a imagem de cada um dos itens da lista. <<<<<<<
+
+Para cada item listado adicione um link para a rota
+“/adicionarCarrinho” passando como parâmetro para tal rota o ID do item escolhido. Por fim, adicione
+na página gerada pela rota “/index” um link para a rota “/verCarrinho”. Adicione um cookie na resposta
+chamado “visita” com a data e hora do acesso ao site. Esse cookie deve ser permanente e durar
+24hs. (1,0 ponto)
+
+3) Prepare seus templates Thymeleaf para uso de bootstrap. Simplifique suas páginas utilizando
+fragments para separar, no mínimo, as partes de cabeçalho, principal e rodapé. A sugestão é o uso
+do template HTML disponível no link (https://startbootstrap.com/template/shop-homepage) (1,0 ponto)

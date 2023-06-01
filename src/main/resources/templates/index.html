@@ -1,20 +1,19 @@
-index.html
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
     <div th:replace="~{/fragments/commons :: head}"></div>
 
 <title>
-    Jottinha Index
+    Loja de Camisas
 </title>
 <body>
-<div th:replace="~{/fragments/commons :: NavigationIndex}"></div>
-<div th:replace="~{/fragments/commons :: headerIndex}"></div>
-
-<div th:replace="~{/fragments/commons :: sectionIndex}"></div>
-<div th:replace="~{/fragments/commons :: footer}"></div>
-<div th:replace="~{/fragments/commons :: script}"></div>
+    <div th:if="${param.mensagem}" class="alert alert-success">
+        <span th:text="${param.mensagem}"></span>
+    </div>
+    <div th:replace="~{/fragments/commons :: NavigationIndex}"></div>
+    <div th:replace="~{/fragments/commons :: headerIndex}"></div>
+    <div th:replace="~{/fragments/commons :: sectionIndex}"></div>
+    <div th:replace="~{/fragments/commons :: footer}"></div>
+    <div th:replace="~{/fragments/commons :: script}"></div>
 
 </body>
 </html>

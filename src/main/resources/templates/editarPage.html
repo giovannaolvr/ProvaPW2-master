@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
     <div th:replace="~{/fragments/commons :: head}"></div>
     <title>
-        Jottinha Edita
+        EditarPage
     </title>
 <body>
     <div th:replace="~{/fragments/commons :: NavigationEditar}"></div>
     <div th:replace="~{/fragments/commons :: headerEditar}"></div>
-    <form method="post" th:action="@{/doSalvar}" th:object="${camisa}">
+    <form method="post" th:action="@{/doSalvar}" th:object="${camisa}" enctype="multipart/form-data">
         <div th:replace="~{/fragments/commons :: sectionEditar}"></div>
     </form>
 </body>
