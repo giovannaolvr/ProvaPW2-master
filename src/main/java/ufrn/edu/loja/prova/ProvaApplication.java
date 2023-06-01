@@ -15,6 +15,7 @@ import ufrn.edu.loja.prova.model.UsuarioModel;
 import java.util.Arrays;
 import java.util.List;
 
+
 @SpringBootApplication
 public class ProvaApplication implements WebMvcConfigurer{
 
@@ -23,9 +24,9 @@ public class ProvaApplication implements WebMvcConfigurer{
         return args -> {
 
             List<UsuarioModel> users = Arrays.asList(
-				new UsuarioModel(null, "João", "admin", "admin@admin.com", "123.456.789-10", true),
-				new UsuarioModel(null, "Maria", "user1", "maria@gmail.com", "444.456.789-10", false),
-				new UsuarioModel(null, "Pedro", "user2", "pedro@hotmail.com", "555.456.789-10", false)
+				new UsuarioModel(null, "João", encoder.encode("admin"), "admin@admin.com", "123.456.789-10", true),
+				new UsuarioModel(null, "Maria", encoder.encode("user1"), "maria@gmail.com", "444.456.789-10", false),
+				new UsuarioModel(null, "Pedro", encoder.encode("user2"), "pedro@hotmail.com", "555.456.789-10", false)
 			);
 
 

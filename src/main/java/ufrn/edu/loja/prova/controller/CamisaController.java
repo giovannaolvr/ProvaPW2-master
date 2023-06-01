@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ufrn.edu.loja.prova.model.*;
 import ufrn.edu.loja.prova.service.*;
-import ufrn.edu.loja.prova.util.UploadUtil;
 import jakarta.servlet.http.Cookie;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -77,7 +76,7 @@ public class CamisaController {
             model.addAttribute("camisa", c.get());
             return "editarPage";
         }else{
-            return "redirect:/adminPage";
+            return "redirect:/adminPage?mensagem=Atualizacao realizada com sucesso!";
         }
     }
 
@@ -87,7 +86,7 @@ public class CamisaController {
         if (camisa.isPresent()) {
             service.delete(camisa);
         }
-        return "redirect:/index?mensagem=Remocao realizada com sucesso";
+        return "redirect:/index?mensagem=Remocao realizada com sucesso!";
     }
 
     @GetMapping("/verCarrinho")
@@ -95,7 +94,7 @@ public class CamisaController {
         List<CamisaModel> carrinho = getCarrinhoFromSession(session);
 
         if (carrinho.isEmpty()) {
-            return "redirect:/index?mensagem=Nao existem itens no carrinho";
+            return "redirect:/index?mensagem=Nao existem itens no carrinho.";
         }
 
         model.addAttribute("carrinho", carrinho);
@@ -109,10 +108,10 @@ public class CamisaController {
         if (!carrinho.isEmpty()) {
             // Carrinho contém itens, então pode finalizar a compra
             carrinho.clear();
-            return "redirect:/index?mensagem=Compra finalizada com sucesso";
+            return "redirect:/index?mensagem=Compra finalizada com sucesso!";
         } else {
             // Carrinho está vazio, redireciona de volta para o index com mensagem de erro
-            return "redirect:/index?mensagem=Nao ha itens no carrinho";
+            return "redirect:/index?mensagem=Nao ha itens no carrinho!";
         }
     }
     

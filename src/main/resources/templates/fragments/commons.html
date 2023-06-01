@@ -26,7 +26,8 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/verCarrinho">Ver Carrinho</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/doLogin">Login</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">Logout</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/adminPage">AdminPage</a></li>
             </ul>
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
@@ -237,11 +238,11 @@
                             <div class="alinhar">
                                 <label>Cor:</label>
                                 <select th:field="*{cor}">
-                                    <option value="azul">Azul</option>
-                                    <option value="branco">Branco</option>
-                                    <option value="preto">Preto</option>
-                                    <option value="vermelho">Amarelo</option>
-                                    <option value="vermelho">Laranja</option>
+                                    <option value="Azul">Azul</option>
+                                    <option value="Branco">Branco</option>
+                                    <option value="Preto">Preto</option>
+                                    <option value="Amarelo">Amarelo</option>
+                                    <option value="Laranja">Laranja</option>
                                 </select>
                                 <p th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></p>
                                 <br><br>
@@ -300,11 +301,11 @@
                                 <div class="alinhar">
                                     <label>Cor:</label>
                                     <select th:field="*{cor}">
-                                        <option value="azul">Azul</option>
-                                        <option value="branco">Branco</option>
-                                        <option value="preto">Preto</option>
-                                        <option value="vermelho">Amarelo</option>
-                                        <option value="vermelho">Laranja</option>
+                                        <option value="Azul">Azul</option>
+                                        <option value="Branco">Branco</option>
+                                        <option value="Preto">Preto</option>
+                                        <option value="Amarelo">Amarelo</option>
+                                        <option value="Laranja">Laranja</option>
                                     </select>
                                     <p th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></p>
                                     <br><br>

@@ -4,13 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.util.Collection;
 import java.util.Collections;
@@ -23,25 +26,24 @@ import java.util.Collections;
 public class UsuarioModel implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Size(max = 20, min = 4)
     @NotBlank
-    String username ;
+    private String username;
 
-    @Size(max = 20, min = 4)
+    @Size(min = 4)
     @NotBlank
-    String senha;
+    private String senha;
 
     @Email
-    String email;
+    private String email;
 
     @NotBlank
-    String cpf;
+    private String cpf;
 
-    Boolean isAdmin;
+    private Boolean isAdmin;
 
-    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.isAdmin){
@@ -51,7 +53,7 @@ public class UsuarioModel implements UserDetails {
         }
     }
 
-     @Override
+    @Override
     public String getPassword() {
         return this.senha;
     }
@@ -80,5 +82,4 @@ public class UsuarioModel implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

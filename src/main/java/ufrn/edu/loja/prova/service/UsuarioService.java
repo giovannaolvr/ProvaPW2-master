@@ -14,8 +14,8 @@ import java.util.Optional;
 @Service
 public class UsuarioService implements UserDetailsService {
 
-    UsuarioRepository repository;
-    BCryptPasswordEncoder encoder;
+    private UsuarioRepository repository;
+    private BCryptPasswordEncoder encoder;
 
     public UsuarioService(UsuarioRepository repository, BCryptPasswordEncoder encoder) {
         this.repository = repository;
@@ -27,10 +27,11 @@ public class UsuarioService implements UserDetailsService {
         this.repository.save(u);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-        Optional<UsuarioModel> user = repository.findByUsername(login);
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Optional<UsuarioModel> user = repository.findByUsername(username);
         if (user.isPresent()){
             return user.get();
         }else{
@@ -38,7 +39,7 @@ public class UsuarioService implements UserDetailsService {
         }
     }
 
-    public List<UsuarioModel> listAll(){
-        return  repository.findAll();
+    public List<UsuarioModel> listAll() {
+        return repository.findAll();
     }
 }
