@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import ufrn.edu.loja.prova.repository.UsuarioRepository;
 import ufrn.edu.loja.prova.model.UsuarioModel;
 
@@ -13,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
-public class ProvaApplication {
+public class ProvaApplication implements WebMvcConfigurer{
 
 	@Bean
     CommandLineRunner commandLineRunner(UsuarioRepository usuarioRepository, PasswordEncoder encoder) {
@@ -35,6 +38,12 @@ public class ProvaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ProvaApplication.class, args);
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/images/img-upload/**").addResourceLocations("/WEB-INF/images/");
+
     }
 
 }

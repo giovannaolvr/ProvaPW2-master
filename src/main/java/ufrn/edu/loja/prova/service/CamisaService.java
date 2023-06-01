@@ -35,8 +35,6 @@ public class CamisaService {
 
     public List<CamisaModel> findBySoftDeleteIsNull() {
         return repository.findBySoftDeleteIsNull();
-    }
-    
-   
+    } 
 
 }

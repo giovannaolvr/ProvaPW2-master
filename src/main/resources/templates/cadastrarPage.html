@@ -1,51 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastrar Camisas Page</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
+    <div th:replace="~{/fragments/commons :: head}"></div>
+    <title>
+        Jottinha Cadastro
+    </title>
 <body>
-    <h1>Cadastro de Camisas</h1>
+    <div th:replace="~{/fragments/commons :: NavigationCadastro}"></div>
+    <div th:replace="~{/fragments/commons :: headerCadastro}"></div>
 
-    <form method="post" th:action="@{/doSalvar}" th:object="${camisa}">
-
-        
-
-        <label>Tamanho:</label>
-        <input type="radio" th:field="*{tamanho}" value="P"> P
-        <input type="radio" th:field="*{tamanho}" value="M"> M
-        <input type="radio" th:field="*{tamanho}" value="G"> G
-        <p th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></p>
-        <br><br>
-        
-        <label>Cor:</label>
-        <select th:field="*{cor}">
-            <option value="azul">Azul</option>
-            <option value="branco">Branco</option>
-            <option value="preto">Preto</option>
-            <option value="vermelho">Vermelho</option>
-        </select>
-        <p th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></p>
-        <br><br>
-        
-        <label>Tipo:</label> 
-        <input type="radio" th:field="*{tipo}" value="Feminino"> Feminino
-        <input type="radio" th:field="*{tipo}" value="Masculino"> Masculino
-        <p th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></p>
-        <br />
-        
-        <br><br>
-        
-        <label>Preço:</label>
-        <input type="text" th:field="*{preco}">
-        <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
-        <br><br>
-
-        <label>ImageURI:</label>
-        <input type="file" accept="image/png, image/jpeg" th:field="*{imageURI}">
-        <p th:if="${#fields.hasErrors('imageURI')}" th:errors="*{imageURI}"></p>
-        
-        <button type="submit">Cadastrar</button>
+    <form method="post" th:action="@{/doSalvar}" th:object="${camisa}" enctype="multipart/form-data">
+        <div th:replace="~{/fragments/commons :: sectionCadastro}"></div>
     </form>
+    <div th:replace="~{/fragments/commons :: footer}"></div>
+    <div th:replace="~{/fragments/commons :: script}"></div>
 </body>
 </html>

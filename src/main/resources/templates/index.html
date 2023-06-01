@@ -1,38 +1,20 @@
+index.html
+
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Loja de Camisas</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
+    <div th:replace="~{/fragments/commons :: head}"></div>
+
+<title>
+    Jottinha Index
+</title>
 <body>
+<div th:replace="~{/fragments/commons :: NavigationIndex}"></div>
+<div th:replace="~{/fragments/commons :: headerIndex}"></div>
 
-<h1>Loja de Camisas</h1>
-
-<!-- Adicione o código abaixo para exibir a mensagem de remoção com sucesso -->
-<div th:if="${param.mensagem}" class="alert alert-success">
-    <span th:text="${param.mensagem}"></span>
-</div>
-
-<!-- Adicione o código abaixo para exibir a quantidade de itens no carrinho -->
-<p>Quantidade de itens no carrinho: <span th:text="${quantidadeCarrinho}"></span></p>
-
-<table>
-    <tr th:each="camisa: ${camisaList}">
-        <td th:text="${camisa.id}"></td>
-        <td th:text="${camisa.tamanho}"></td>
-        <td th:text="${camisa.cor}"></td>
-        <td th:text="${camisa.tipo}"></td>
-        <td th:text="${camisa.preco}"></td>
-        <td>
-            <img th:src="${camisa.imageURI}" width="50" height="50" alt="Imagem da camisa">
-        </td>
-        <td>
-            <a th:href="@{'adicionarCarrinho/'+${camisa.id}}">Adicionar ao carrinho</a>
-        </td>
-    </tr>
-</table>
-
-<h2><a th:href="@{verCarrinho}">Ver carrinho.</a></h2>
+<div th:replace="~{/fragments/commons :: sectionIndex}"></div>
+<div th:replace="~{/fragments/commons :: footer}"></div>
+<div th:replace="~{/fragments/commons :: script}"></div>
 
 </body>
 </html>

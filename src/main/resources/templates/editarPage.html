@@ -1,49 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Camisa</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
+    <div th:replace="~{/fragments/commons :: head}"></div>
+    <title>
+        Jottinha Edita
+    </title>
 <body>
-    <h2>Editar Camisa</h2>
+    <div th:replace="~{/fragments/commons :: NavigationEditar}"></div>
+    <div th:replace="~{/fragments/commons :: headerEditar}"></div>
     <form method="post" th:action="@{/doSalvar}" th:object="${camisa}">
-        <input type="hidden" th:field="*{id}" />
-        <div>
-            <label>Tamanho:</label>
-                <input type="radio" th:field="*{tamanho}" value="P"> P
-                <input type="radio" th:field="*{tamanho}" value="M"> M
-                <input type="radio" th:field="*{tamanho}" value="G"> G
-            <span th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></span>
-        </div>
-        <div>
-            <label>Cor:</label>
-                <select th:field="*{cor}">
-                    <option value="azul">Azul</option>
-                    <option value="branco">Branco</option>
-                    <option value="preto">Preto</option>
-                    <option value="vermelho">Vermelho</option>
-                </select>
-            <span th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></span>
-        </div>
-        <div>
-            <label>Tipo:</label> 
-            <input type="radio" th:field="*{tipo}" value="Feminino"> Feminino
-            <input type="radio" th:field="*{tipo}" value="Masculino"> Masculino
-            <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
-        </div>
-        <div>
-            <label>Preço:</label>
-            <input type="text" th:field="*{preco}" />
-            <span th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></span>
-        </div>
-        <div>
-            <label>ImageURI:</label>
-                <input type="file" accept="image/png, image/jpeg" th:field="*{imageURI}">
-                <p th:if="${#fields.hasErrors('imageURI')}" th:errors="*{imageURI}"></p>
-        </div>
-
-
-        <button type="submit">Salvar</button>
+        <div th:replace="~{/fragments/commons :: sectionEditar}"></div>
     </form>
 </body>
 </html>

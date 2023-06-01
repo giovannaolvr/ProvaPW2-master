@@ -1,39 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Loja de Camisas</title>
-    <link rel="stylesheet" href="../css/style.css">
-    
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org%22%3E/">
+    <div th:replace="~{/fragments/commons :: head}"></div>
+    <title>
+        Jottinha Adm
+    </title>
 <body>
-    <h1>Loja de Camisas - Administrador</h1>
-
-    <h2>Cadastrar <a th:href="@{cadastrarPage}">nova camisa</a>.</h2>
-    
-    <div class="container">
-        <div class="card" th:each="camisa: ${camisaList}">
-            <img th:src="${camisa.imageURI}" alt="Imagem da camisa">
-            <div class="card-info">
-                <p th:text="'Tamanho: ' + ${camisa.tamanho}"></p>
-                <p th:text="'Cor: ' + ${camisa.cor}"></p>
-                <p th:text="'Gênero: ' + ${camisa.tipo}"></p>
-                <p th:text="'Preço: ' + ${camisa.preco}"></p>
-            </div>
-            <div class="card-actions">
-                <a th:href="@{'editarPage/'+${camisa.id}}">
-                    <span class="edit-icon">&#9998;</span>
-                    Editar
-                </a>
-                <a th:href="@{'deletar/'+${camisa.id}}">
-                    <span class="delete-icon">&#128465;</span>
-                    Excluir
-                </a>
-            </div>
-        </div>
-    </div>
-
-    
-    
+    <div th:replace="~{/fragments/commons :: NavigationAdmin}"></div>
+    <div th:replace="~{/fragments/commons :: headerAdmin}"></div>
+    <div th:replace="~{/fragments/commons :: sectionAdmin}"></div>
+    <div th:replace="~{/fragments/commons :: footer}"></div>
+    <div th:replace="~{/fragments/commons :: script}"></div>
 </body>
 </html>

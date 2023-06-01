@@ -7,12 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import ufrn.edu.loja.prova.model.*;
 import ufrn.edu.loja.prova.service.*;
-
-
+import ufrn.edu.loja.prova.util.UploadUtil;
 import jakarta.servlet.http.Cookie;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,17 +23,21 @@ import java.util.Optional;
 public class CamisaController {
 
     private final CamisaService service;
+    private UploadFileService uploadFileService;
+    
 
-    public CamisaController(CamisaService service) {
+    public CamisaController(CamisaService service, UploadFileService uploadFileService) {
         this.service = service;
+        this.uploadFileService = uploadFileService;
     }
    
 
     @RequestMapping(value = {"/", "/index", "/index.html"}, method = RequestMethod.GET)
     public String getIndex(Model model, HttpServletResponse response, HttpSession session) {
-        List<CamisaModel> camisaList = service.findBySoftDeleteIsNull();
+        //List<CamisaModel> camisaList = service.findBySoftDeleteIsNull();
+        List<CamisaModel> camisaList = service.findAll();
         model.addAttribute("camisaList", camisaList);
-
+        System.out.println(camisaList.size());
         // Adicionar o cookie de visita
         addVisitaCookie(response);
 
@@ -62,13 +65,18 @@ public class CamisaController {
     }
 
     @PostMapping("/doSalvar")
-    public String doSalvar(@ModelAttribute("camisa") @Valid CamisaModel c, Errors errors) {
+    public String doSalvar(@ModelAttribute("camisa") @Valid CamisaModel c, Errors errors, @RequestParam(name="file") MultipartFile file) {
+        
         if (errors.hasErrors()) {
             return "cadastrarPage";
         } else {
+            String fileName = file.getOriginalFilename();
+            c.setImageURI('/'+fileName);
+            this.uploadFileService.save(file);
             service.save(c);
             return "redirect:/adminPage";
         }
+        
     }
 
     @GetMapping("/editarPage/{id}")

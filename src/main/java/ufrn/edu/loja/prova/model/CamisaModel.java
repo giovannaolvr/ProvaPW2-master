@@ -27,7 +27,7 @@ public class CamisaModel {
 
     private Long softDelete;
 
-    @NotBlank
+    
     private String imageURI;
 
     @NotBlank
