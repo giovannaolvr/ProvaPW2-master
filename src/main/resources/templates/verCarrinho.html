@@ -2,22 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Loja de Camisas</title>
+    <title>Ver Carrinho</title>
 </head>
 <body>
 
-<h1>Loja de Camisas</h1>
+<h1>Carrinho de Compras</h1>
 
 <!-- Adicione o código abaixo para exibir a mensagem de remoção com sucesso -->
 <div th:if="${param.mensagem}" class="alert alert-success">
     <span th:text="${param.mensagem}"></span>
 </div>
 
-<!-- Adicione o código abaixo para exibir a quantidade de itens no carrinho -->
-<p>Quantidade de itens no carrinho: <span th:text="${quantidadeCarrinho}"></span></p>
-
 <table>
-    <tr th:each="camisa: ${camisaList}">
+    <tr th:each="camisa: ${carrinho}">
         <td th:text="${camisa.id}"></td>
         <td th:text="${camisa.tamanho}"></td>
         <td th:text="${camisa.cor}"></td>
@@ -27,12 +24,13 @@
             <img th:src="${camisa.imageURI}" width="50" height="50" alt="Imagem da camisa">
         </td>
         <td>
-            <a th:href="@{'adicionarCarrinho/'+${camisa.id}}">Adicionar ao carrinho</a>
+            <a th:href="@{'/removerDoCarrinho/'+${camisa.id}}">Remover do carrinho</a>
         </td>
     </tr>
 </table>
+<a th:href="@{'/finalizarCompra'}">Finalizar Compra</a>
 
-<h2><a th:href="@{verCarrinho}">Ver carrinho.</a></h2>
+<h2><a th:href="@{'/index'}">Voltar para a página inicial.</a></h2>
 
 </body>
 </html>

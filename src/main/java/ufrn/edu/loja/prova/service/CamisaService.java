@@ -28,10 +28,15 @@ public class CamisaService {
         return repository.findById(id);
     }
 
-    public void delete(Long id){
-        repository.deleteById(id);
+    public void delete(Optional<CamisaModel> camisa){
+        camisa.get().setSoftDelete();
+        repository.save(camisa.get()); 
     }
 
+    public List<CamisaModel> findBySoftDeleteIsNull() {
+        return repository.findBySoftDeleteIsNull();
+    }
+    
    
 
 }

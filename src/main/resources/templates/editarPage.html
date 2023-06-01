@@ -10,17 +10,25 @@
         <input type="hidden" th:field="*{id}" />
         <div>
             <label>Tamanho:</label>
-            <input type="text" th:field="*{tamanho}" />
+                <input type="radio" th:field="*{tamanho}" value="P"> P
+                <input type="radio" th:field="*{tamanho}" value="M"> M
+                <input type="radio" th:field="*{tamanho}" value="G"> G
             <span th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></span>
         </div>
         <div>
             <label>Cor:</label>
-            <input type="text" th:field="*{cor}" />
+                <select th:field="*{cor}">
+                    <option value="azul">Azul</option>
+                    <option value="branco">Branco</option>
+                    <option value="preto">Preto</option>
+                    <option value="vermelho">Vermelho</option>
+                </select>
             <span th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></span>
         </div>
         <div>
-            <label>Tipo:</label>
-            <input type="text" th:field="*{tipo}" />
+            <label>Tipo:</label> 
+            <input type="radio" th:field="*{tipo}" value="Feminino"> Feminino
+            <input type="radio" th:field="*{tipo}" value="Masculino"> Masculino
             <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
         </div>
         <div>
@@ -30,8 +38,8 @@
         </div>
         <div>
             <label>ImageURI:</label>
-        <input type="file" accept="image/png, image/jpeg" th:field="*{imageURI}">
-        <p th:if="${#fields.hasErrors('imageURI')}" th:errors="*{imageURI}"></p>
+                <input type="file" accept="image/png, image/jpeg" th:field="*{imageURI}">
+                <p th:if="${#fields.hasErrors('imageURI')}" th:errors="*{imageURI}"></p>
         </div>
 
 

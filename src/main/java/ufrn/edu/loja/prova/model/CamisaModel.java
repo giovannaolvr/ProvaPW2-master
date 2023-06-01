@@ -1,6 +1,7 @@
 package ufrn.edu.loja.prova.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
@@ -24,7 +25,7 @@ public class CamisaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date softDelete;
+    private Long softDelete;
 
     @NotBlank
     private String imageURI;
@@ -40,4 +41,9 @@ public class CamisaModel {
 
     @NumberFormat(style = Style.CURRENCY , pattern = "#,##0.00")
     private Double preco;
+
+    public void setSoftDelete() {
+        this.softDelete = LocalDate.now().toEpochDay();
+    }
+
 }

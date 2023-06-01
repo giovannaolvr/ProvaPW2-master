@@ -12,8 +12,6 @@ public interface CamisaRepository extends JpaRepository<CamisaModel, Long>{
     List<CamisaModel> findCamisaById(Long id);
 
     List<CamisaModel> findBySoftDeleteIsNull();
-    
-
 }
     
 

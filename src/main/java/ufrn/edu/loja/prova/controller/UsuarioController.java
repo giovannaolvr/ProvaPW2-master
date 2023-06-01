@@ -28,7 +28,7 @@ public class UsuarioController {
 
     @RequestMapping(value = {"/adminPage"}, method = RequestMethod.GET)
     public String getAdmin(Model model){
-        List<CamisaModel> camisaList = serviceCamisa.findAll();
+        List<CamisaModel> camisaList = serviceCamisa.findBySoftDeleteIsNull();
         model.addAttribute("camisaList", camisaList);
         return "adminPage";
     }
