@@ -57,7 +57,7 @@ public class CamisaController {
 
     @PostMapping("/doSalvar")
     public String doSalvar(@ModelAttribute("camisa") @Valid CamisaModel c, Errors errors, @RequestParam(name="file") MultipartFile file) {
-        var numeroAleatorio = Math.random();
+        var numeroAleatorio = Math.random(); 
 
         if (errors.hasErrors()) {
             return "cadastrarPage";
