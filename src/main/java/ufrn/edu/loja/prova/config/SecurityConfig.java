@@ -18,8 +18,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/cadastrarPage").hasRole("ADMIN");
                     auth.requestMatchers("/editarPage/**").hasRole("ADMIN");
+                    auth.requestMatchers("/deletar/**").hasRole("ADMIN");
                     auth.requestMatchers("/adminPage").hasRole("ADMIN");
                     auth.requestMatchers("/verCarrinho").hasRole("USER");
+                    auth.requestMatchers("/adicionarCarrinho/**").hasRole("USER");
+                    auth.requestMatchers("/finalizarCompra").hasRole("USER");
                     auth.anyRequest().permitAll();
                 })
                 .formLogin(Customizer.withDefaults())

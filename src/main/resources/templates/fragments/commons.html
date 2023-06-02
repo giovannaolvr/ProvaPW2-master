@@ -26,11 +26,11 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/verCarrinho">Ver Carrinho</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">Logout</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/adminPage">AdminPage</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">Logout</a></li>
             </ul>
             <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
+                <button class="btn btn-outline-dark" type="submit"> 
                     <i class="bi-cart-fill me-1"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${quantidadeCarrinho}"></span>
@@ -61,6 +61,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/cadastrarPage">Cadastrar Camisa</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -360,7 +361,10 @@
 
 <footer th:fragment="footer">
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+            <p class="m-0 text-center text-white">Giovanna Oliveira e João Victor Gomes Meneses</p>
+        </div>
     </footer>
 </footer>
 

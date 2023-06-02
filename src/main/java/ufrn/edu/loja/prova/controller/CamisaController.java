@@ -60,11 +60,11 @@ public class CamisaController {
         if (errors.hasErrors()) {
             return "cadastrarPage";
         } else {
-            String fileName = file.getOriginalFilename();
+            String fileName = c.getId()+"produto"+file.getOriginalFilename();
             c.setImageURI('/'+fileName);
-            this.uploadFileService.save(file);
+            this.uploadFileService.save(file, fileName);
             service.save(c);
-            return "redirect:/adminPage";
+            return "redirect:/adminPage?mensagem=Salvo com sucesso!"; 
         }
         
     }
@@ -76,7 +76,7 @@ public class CamisaController {
             model.addAttribute("camisa", c.get());
             return "editarPage";
         }else{
-            return "redirect:/adminPage?mensagem=Atualizacao realizada com sucesso!";
+            return "redirect:/adminPage";
         }
     }
 
