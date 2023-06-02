@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 
 @Controller
@@ -56,11 +57,12 @@ public class CamisaController {
 
     @PostMapping("/doSalvar")
     public String doSalvar(@ModelAttribute("camisa") @Valid CamisaModel c, Errors errors, @RequestParam(name="file") MultipartFile file) {
-        
+        var numeroAleatorio = Math.random();
+
         if (errors.hasErrors()) {
             return "cadastrarPage";
         } else {
-            String fileName = c.getId()+"produto"+file.getOriginalFilename();
+            String fileName = numeroAleatorio+"produto"+file.getOriginalFilename();
             c.setImageURI('/'+fileName);
             this.uploadFileService.save(file, fileName);
             service.save(c);
